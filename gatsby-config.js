@@ -47,9 +47,17 @@ module.exports = {
           },
           {
             baseId: `appoXaOlIgpiHK3I2`,
+            tableName: `Intermediate Area Database`,
+            tableView: `Grid view`,
+          },
+          {
+            baseId: `appoXaOlIgpiHK3I2`,
             tableName: `Policy Database`,
             tableView: `Final Database`,
-            tableLinks: [`Authorizing_country_name`],
+            tableLinks: [
+              `Authorizing_country_name`,
+              `Authorizing_state_province__if_applicable`,
+            ],
           },
         ],
       },
