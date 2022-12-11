@@ -14,8 +14,8 @@ workflows:
           # Examples:
           # bucket: 's3://dev-projectname'
           # distribution: 'E31RXXXXXXXXXX'
-          bucket: ''
-          distribution: ''
+          bucket: 's3://dev-covidamp-2'
+          distribution: 'E16D0VNJ48X4JY'
           context: *credentials
           filters:
             branches:
@@ -23,8 +23,8 @@ workflows:
                 - dev
       # review site
       - deploy:
-          bucket: ''
-          distribution: ''
+          bucket: 's3://review-covidamp-2'
+          distribution: 'E3M4VMW462QXGD'
           context: *credentials
           filters:
             branches:
@@ -32,8 +32,8 @@ workflows:
                 - review
       # staging site
       - deploy:
-          bucket: ''
-          distribution: ''
+          bucket: 's3://staging-covidamp-2'
+          distribution: 'EVC934LEMKTQK'
           context: *credentials
           filters:
             branches:
@@ -41,8 +41,8 @@ workflows:
                 - staging
       # prod site
       - deploy:
-          bucket: ''
-          distribution: ''
+          bucket: 's3://prod-covidamp-2'
+          distribution: 'E3FI4I6VEDMI19'
           context: *credentials
           filters:
             branches:
