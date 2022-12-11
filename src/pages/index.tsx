@@ -17,15 +17,7 @@ const IndexPage = (): JSX.Element => {
       <CMS.SEO />
       <Main>
         <CMS.Image name="Talus Logo" data={data} />
-        <h1>
-          <CMS.Text name="H1" data={data} />
-        </h1>
-        <p>
-          <CMS.Text name="Example Text" data={data} />
-          <a href={CMS.getText(data, 'Airtable URL')}>
-            <CMS.Text name="Airtable Link Text" data={data} />
-          </a>
-        </p>
+        <h1>COVID AMP 2 Data Pipeline Proof of Concept Site</h1>
       </Main>
     </Providers>
   )
