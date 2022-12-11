@@ -52,15 +52,15 @@ module.exports = {
             queryName: `IntermediateAreas`,
             separateNodeType: true,
           },
-          // {
-          //   baseId: `appoXaOlIgpiHK3I2`,
-          //   tableName: `Policy Database`,
-          //   tableView: `Final Database`,
-          //   tableLinks: [
-          //     `Authorizing_country_name`,
-          //     // `Authorizing_state_province__if_applicable`,
-          //   ],
-          // },
+          {
+            baseId: `appoXaOlIgpiHK3I2`,
+            tableName: `Policy Database`,
+            tableView: `Ryan COVIDAMP2 Dev Grid`,
+            tableLinks: [
+              `Authorizing_country_name`,
+              // `Authorizing_state_province__if_applicable`,
+            ],
+          },
         ],
       },
     },

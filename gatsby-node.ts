@@ -2,7 +2,7 @@ import * as path from 'path'
 import { GatsbyNode } from 'gatsby'
 
 interface Places {
-  error?: any
+  error?: unknown
   data?: {
     countries: {
       nodes: {
