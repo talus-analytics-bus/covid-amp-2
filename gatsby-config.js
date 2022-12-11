@@ -39,6 +39,18 @@ module.exports = {
             tableView: `CMS`,
             mapping: { SVG: `fileNode` },
           },
+          // covidamp tables
+          {
+            baseId: `appoXaOlIgpiHK3I2`,
+            tableName: `ISO Code Look-up`,
+            tableView: `Grid view`,
+          },
+          {
+            baseId: `appoXaOlIgpiHK3I2`,
+            tableName: `Policy Database`,
+            tableView: `Final Database`,
+            tableLinks: [`Authorizing_country_name`],
+          },
         ],
       },
     },
