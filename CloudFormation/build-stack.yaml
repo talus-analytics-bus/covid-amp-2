@@ -567,6 +567,7 @@ Resources:
         Enabled: 'true'
         DefaultRootObject: index.html
         DefaultCacheBehavior:
+          Compress: true
           AllowedMethods:
             - GET
             - HEAD
@@ -578,9 +579,9 @@ Resources:
           ForwardedValues:
             QueryString: 'true'
           ViewerProtocolPolicy: redirect-to-https
-          # LambdaFunctionAssociations:
-          #   - EventType: "viewer-request"
-          #     LambdaFunctionARN: !Ref BasicAuthLambdaVersion
+          LambdaFunctionAssociations:
+            - EventType: 'viewer-request'
+              LambdaFunctionARN: !Ref BasicAuthLambdaVersion
         PriceClass: PriceClass_All
         ViewerCertificate:
           AcmCertificateArn: !Ref CertificateArn
