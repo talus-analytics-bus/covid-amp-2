@@ -26,7 +26,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   graphql,
   actions,
 }) => {
-  const policyPageTemplate = path.resolve('./src/templates/PolicyPage.tsx')
+  const placePageTemplate = path.resolve('./src/templates/PlacePage.tsx')
 
   const places: Places = await graphql(`
     query {
@@ -61,7 +61,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   places.data.countries.nodes.forEach(node => {
     actions.createPage({
       path: `policies/${node.data.ISO_alpha3_code}`,
-      component: policyPageTemplate,
+      component: placePageTemplate,
       context: {
         iso3: node.data.ISO_alpha3_code,
         name: node.data.Country_Name,
@@ -72,7 +72,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   places.data.states.nodes.forEach(node => {
     actions.createPage({
       path: `policies/USA/${node.data.Name}`,
-      component: policyPageTemplate,
+      component: placePageTemplate,
       context: {
         iso3: 'USA',
         name: node.data.Name,

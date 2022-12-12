@@ -7,11 +7,11 @@ interface PageContext {
     policies: {
       nodes: {
         data: {
+          Unique_ID: string
           Actual_end_date: string
           Effective_start_date: string
           Policy_category: string
           Policy_subcategory: string
-          Policy_description: string
         }
       }[]
     }
@@ -33,8 +33,7 @@ const PolicyPage = ({ data, pageContext }: PageContext) => {
         <Policy>
           <h3>Start: {policy.data.Effective_start_date}</h3>
           <h3>End: {policy.data.Actual_end_date}</h3>
-          <h3>Description</h3>
-          // <p>{policy.data.Policy_description}</p>
+          <p>{policy.data.Unique_ID}</p>
         </Policy>
       ))}
     </>
@@ -51,11 +50,11 @@ export const query = graphql`
     ) {
       nodes {
         data {
+          Unique_ID
           Actual_end_date
           Effective_start_date
           Policy_category
           Policy_subcategory
-          # Policy_description
         }
       }
     }
