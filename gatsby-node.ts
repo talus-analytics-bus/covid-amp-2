@@ -44,8 +44,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
   graphql,
   actions,
 }) => {
-  const placePageTemplate = path.resolve('./src/templates/PlacePage.tsx')
-
   const places: Places = await graphql(`
     query {
       countries: allAirtable(
@@ -76,9 +74,11 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   if (!places.data) throw new Error('Places query error')
 
+  const placePageTemplate = path.resolve('./src/templates/PlacePage.tsx')
+
   places.data.countries.nodes.forEach(node => {
     actions.createPage({
-      path: `policies/${node.data.ISO_alpha3_code}`,
+      path: `/policies/${node.data.ISO_alpha3_code}`,
       component: placePageTemplate,
       context: {
         iso3: node.data.ISO_alpha3_code,
@@ -89,7 +89,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   places.data.states.nodes.forEach(node => {
     actions.createPage({
-      path: `policies/USA/${node.data.Name}`,
+      path: `/policies/USA/${node.data.Name}`,
       component: placePageTemplate,
       context: {
         iso3: 'USA',
@@ -117,4 +117,18 @@ export const createPages: GatsbyNode['createPages'] = async ({
   `)
 
   if (!policyIDs.data) throw new Error('Policy IDs query error')
+
+  const policyPageTemplate = path.resolve('./src/templates/PolicyPage.tsx')
+
+  console.log(policyIDs)
+
+  policyIDs.data.policies.nodes.forEach(policy => {
+    actions.createPage({
+      path: `/policies/${policy.data.Authorizing_country_name[0].data.ISO_alpha3_code}/${policy.data.Unique_ID}`,
+      component: policyPageTemplate,
+      context: {
+        Unique_ID: policy.data.Unique_ID,
+      },
+    })
+  })
 }
