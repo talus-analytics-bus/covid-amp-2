@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -33,7 +33,9 @@ const PolicyPage = ({ data, pageContext }: PageContext) => {
         <Policy>
           <h3>Start: {policy.data.Effective_start_date}</h3>
           <h3>End: {policy.data.Actual_end_date}</h3>
-          <p>{policy.data.Unique_ID}</p>
+          <Link to={`/policies/${pageContext.iso3}/${policy.data.Unique_ID}`}>
+            {policy.data.Unique_ID}
+          </Link>
         </Policy>
       ))}
     </>
