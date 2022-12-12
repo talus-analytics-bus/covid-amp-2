@@ -120,8 +120,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   const policyPageTemplate = path.resolve('./src/templates/PolicyPage.tsx')
 
-  console.log(policyIDs)
-
   policyIDs.data.policies.nodes.forEach(policy => {
     actions.createPage({
       path: `/policies/${policy.data.Authorizing_country_name[0].data.ISO_alpha3_code}/${policy.data.Unique_ID}`,
