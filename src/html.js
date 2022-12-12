@@ -8,9 +8,9 @@ export default function HTML(props) {
     p => typeof p !== 'string' && p.resolve === `gatsby-plugin-gtag`
   ).options
 
-  if (trackingId === 'G-XXXXXXXXXX')
-    console.warn(`Google Analytics not configured`)
-  else console.info(`Google Analytics tag: ${trackingId}`)
+  // if (trackingId === 'G-XXXXXXXXXX')
+  //   console.warn(`Google Analytics not configured`)
+  // else console.info(`Google Analytics tag: ${trackingId}`)
 
   return (
     <html {...props.htmlAttributes} lang="en">
