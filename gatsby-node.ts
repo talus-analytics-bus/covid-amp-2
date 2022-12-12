@@ -22,6 +22,24 @@ interface Places {
   }
 }
 
+interface PolicyIDs {
+  error?: unknown
+  data?: {
+    policies: {
+      nodes: {
+        data: {
+          Unique_ID: string
+          Authorizing_country_name: {
+            data: {
+              ISO_alpha3_code: string
+            }
+          }[]
+        }
+      }[]
+    }
+  }
+}
+
 export const createPages: GatsbyNode['createPages'] = async ({
   graphql,
   actions,
@@ -79,4 +97,24 @@ export const createPages: GatsbyNode['createPages'] = async ({
       },
     })
   })
+
+  const policyIDs: PolicyIDs = await graphql(`
+    query {
+      policies: allAirtable(filter: { table: { eq: "Policy Database" } }) {
+        nodes {
+          data {
+            Unique_ID
+            Authorizing_country_name {
+              data {
+                Country_Name
+                ISO_alpha3_code
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (!policyIDs.data) throw new Error('Policy IDs query error')
 }
