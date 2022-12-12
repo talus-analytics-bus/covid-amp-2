@@ -19,6 +19,12 @@ interface PageContext {
             ISO_alpha3_code: string
           }
         }
+        Attachment_for_policy: {
+          localFiles?: {
+            prettySize: string
+            publicURL: string
+          }[]
+        }
       }
     }
   }
@@ -30,6 +36,8 @@ interface PageContext {
 const Policy = styled.div``
 
 const PolicyPage = ({ data: { policy }, pageContext }: PageContext) => {
+  if (!policy.data.Attachment_for_policy.localFiles)
+    console.log('File not found ' + pageContext.Unique_ID)
   return (
     <>
       <h2>Policy page</h2>
@@ -38,6 +46,11 @@ const PolicyPage = ({ data: { policy }, pageContext }: PageContext) => {
         <h3>End: {policy.data.Actual_end_date}</h3>
         <h4>Description</h4>
         <p>{policy.data.Policy_description}</p>
+        <h5>
+          <a href={policy.data.Attachment_for_policy.localFiles?.[0].publicURL}>
+            Download Original Document
+          </a>
+        </h5>
       </Policy>
     </>
   )
@@ -58,6 +71,12 @@ export const query = graphql`
           data {
             Country_Name
             ISO_alpha3_code
+          }
+        }
+        Attachment_for_policy {
+          localFiles {
+            prettySize
+            publicURL
           }
         }
       }

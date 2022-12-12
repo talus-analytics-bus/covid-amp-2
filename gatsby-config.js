@@ -60,6 +60,9 @@ module.exports = {
               `Authorizing_country_name`,
               // `Authorizing_state_province__if_applicable`,
             ],
+            mapping: {
+              Attachment_for_policy: `fileNode`,
+            },
           },
         ],
       },
